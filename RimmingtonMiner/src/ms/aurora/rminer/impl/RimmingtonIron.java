@@ -22,7 +22,7 @@ import static ms.aurora.rminer.RimmingtonMiner.*;
 /**
  * Mining strategy for iron, at the Rimmington mine.
  *
- * @author rvbiljouw
+ * @author Rick
  */
 public class RimmingtonIron extends AbstractMiningStrategy implements PaintListener {
     private static final RSTile BANK_LOCATION = new RSTile(3013, 3356);

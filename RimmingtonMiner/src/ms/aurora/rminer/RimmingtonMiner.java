@@ -14,7 +14,7 @@ import static ms.aurora.api.util.Utilities.random;
 
 
 /**
- * @author rvbiljouw
+ * @author Rick
  */
 @ScriptManifest(name = "RimmingtonMiner", author = "Rick", version = 1.0)
 public class RimmingtonMiner extends Script implements PaintListener {

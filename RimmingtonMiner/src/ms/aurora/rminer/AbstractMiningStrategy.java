@@ -7,7 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @author rvbiljouw
+ * @author Rick
  */
 public abstract class AbstractMiningStrategy {
     private Timer timer = new Timer();

@@ -1,7 +1,7 @@
 package ms.aurora.rminer.exception;
 
 /**
- * @author rvbiljouw
+ * @author Rick
  */
 public class RequiredLevelException extends RuntimeException {
 }

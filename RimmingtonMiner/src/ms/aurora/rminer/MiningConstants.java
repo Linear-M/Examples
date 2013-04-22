@@ -1,7 +1,7 @@
 package ms.aurora.rminer;
 
 /**
- * @author rvbiljouw
+ * @author Rick
  */
 public class MiningConstants {
 
