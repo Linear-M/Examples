@@ -20,7 +20,7 @@ import static ms.aurora.api.util.Utilities.sleepNoException;
 import static ms.aurora.rminer.RimmingtonMiner.*;
 
 /**
- * Mining strategy for copper, at the Rimmington mine.
+ * Mining strategy for clay, at the Rimmington mine.
  *
  * @author Rick
  */
@@ -39,11 +39,6 @@ public class RimmingtonClay extends AbstractMiningStrategy implements PaintListe
     private static final int[] ROCK_ID = {9711, 9713};
     private static final int[] ORE_ID = {434};
     private volatile RSObject selectedObject = null;
-
-    @Override
-    public int getMinimumLevel() {
-        return 1;
-    }
 
     @Override
     public void prepare() {

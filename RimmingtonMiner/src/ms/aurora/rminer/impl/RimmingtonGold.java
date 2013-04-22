@@ -20,7 +20,7 @@ import static ms.aurora.api.util.Utilities.sleepNoException;
 import static ms.aurora.rminer.RimmingtonMiner.*;
 
 /**
- * Mining strategy for copper, at the Rimmington mine.
+ * Mining strategy for gold, at the Rimmington mine.
  *
  * @author Rick
  */
@@ -35,16 +35,10 @@ public class RimmingtonGold extends AbstractMiningStrategy implements PaintListe
             new RSTile(3006, 3329), new RSTile(3006, 3341), new RSTile(3006, 3351),
             new RSTile(3012, 3355),
     };
-    private static final RSTile[] MINE_PATH = Walking.reversePath(BANK_PATH);
 
     private static final int[] ROCK_ID = {9720, 9722};
     private static final int[] ORE_ID = {444};
     private volatile RSObject selectedObject = null;
-
-    @Override
-    public int getMinimumLevel() {
-        return 1;
-    }
 
     @Override
     public void prepare() {

@@ -36,16 +36,9 @@ public class RimmingtonIron extends AbstractMiningStrategy implements PaintListe
             new RSTile(3012, 3355),
     };
 
-    private static final RSTile[] MINE_PATH = Walking.reversePath(BANK_PATH);
-
     private static final int[] ROCK_ID = {9717, 9718, 9719};
     private static final int[] ORE_ID = {440};
     private volatile RSObject selectedObject = null;
-
-    @Override
-    public int getMinimumLevel() {
-        return 1;
-    }
 
     @Override
     public void prepare() {

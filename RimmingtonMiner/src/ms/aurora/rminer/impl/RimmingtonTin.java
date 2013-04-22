@@ -20,7 +20,7 @@ import static ms.aurora.api.util.Utilities.sleepNoException;
 import static ms.aurora.rminer.RimmingtonMiner.*;
 
 /**
- * Mining strategy for copper, at the Rimmington mine.
+ * Mining strategy for tin, at the Rimmington mine.
  *
  * @author Rick
  */
@@ -36,16 +36,9 @@ public class RimmingtonTin extends AbstractMiningStrategy implements PaintListen
             new RSTile(3012, 3355),
     };
 
-    private static final RSTile[] MINE_PATH = Walking.reversePath(BANK_PATH);
-
     private static final int[] ROCK_ID = {9714, 9716};
     private static final int[] ORE_ID = {438};
     private volatile RSObject selectedObject = null;
-
-    @Override
-    public int getMinimumLevel() {
-        return 1;
-    }
 
     @Override
     public void prepare() {
@@ -72,11 +65,9 @@ public class RimmingtonTin extends AbstractMiningStrategy implements PaintListen
             selectedObject = null;
             state = State.MINING;
             sleepNoException(400, 500);
-            System.out.println("Mining tin...");
         } else if (distance(getLocal().getLocation(), MINING_SITE) > 14) {
             state = State.WALKING;
             Walking.traverse(BANK_PATH, Walking.BACKWARDS);
-            System.out.println("Walking to mine...");
         }
     }
 
@@ -87,7 +78,6 @@ public class RimmingtonTin extends AbstractMiningStrategy implements PaintListen
         if (distance(getLocal().getLocation(), BANK_LOCATION) > 4) {
             state = State.WALKING;
             Walking.traverse(BANK_PATH, Walking.FORWARDS);
-            System.out.println("Walking to bank...");
         } else if (!Bank.isOpen()) {
             state = State.BANKING;
             Bank.open();

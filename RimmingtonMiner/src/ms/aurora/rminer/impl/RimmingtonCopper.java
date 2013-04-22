@@ -41,11 +41,6 @@ public class RimmingtonCopper extends AbstractMiningStrategy implements PaintLis
     private volatile RSObject selectedObject = null;
 
     @Override
-    public int getMinimumLevel() {
-        return 1;
-    }
-
-    @Override
     public void prepare() {
 
     }
