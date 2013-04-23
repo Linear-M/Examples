@@ -3,7 +3,7 @@ package ms.aurora.rminer;
 import ms.aurora.api.script.Script;
 import ms.aurora.api.script.ScriptManifest;
 import ms.aurora.event.listeners.PaintListener;
-import ms.aurora.rminer.gui.AIOMinerGUI;
+import ms.aurora.rminer.gui.RMinerStage;
 import ms.aurora.rminer.impl.*;
 
 import java.awt.*;
@@ -24,8 +24,8 @@ public class RimmingtonMiner extends Script implements PaintListener {
 
     @Override
     public void onStart() {
-        AIOMinerGUI gui = new AIOMinerGUI();
-        gui.setVisible(true);
+        RMinerStage stage = new RMinerStage();
+        stage.show();
     }
 
     @Override
