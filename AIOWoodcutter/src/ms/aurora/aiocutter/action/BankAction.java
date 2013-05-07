@@ -35,7 +35,7 @@ public class BankAction extends Action {
     @Override
     public int execute() {
         if(distance(configuration.getBankArea().getNearestTile(), getLocal().getLocation()) >= MAX_INTERACTION_DISTANCE) {
-            Walking.walkTo(configuration.getBankArea().getRandomTile());
+            Walking.walkTo(configuration.getBankArea().getNearestTile());
         } else if(!Bank.isOpen()) {
             Bank.open();
         } else {
