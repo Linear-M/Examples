@@ -27,15 +27,6 @@ import static ms.aurora.rminer.RimmingtonMiner.*;
 public class RimmingtonGold extends AbstractMiningStrategy implements PaintListener {
     private static final RSTile BANK_LOCATION = new RSTile(3013, 3356);
     private static final RSTile MINING_SITE = new RSTile(2976, 3235);
-
-    private static final RSTile[] BANK_PATH = new RSTile[]{
-            new RSTile(2977, 3240), new RSTile(2977, 3249), new RSTile(2975, 3262),
-            new RSTile(2980, 3272), new RSTile(2990, 3281), new RSTile(2994, 3294),
-            new RSTile(3004, 3300), new RSTile(3005, 3310), new RSTile(3007, 3318),
-            new RSTile(3006, 3329), new RSTile(3006, 3341), new RSTile(3006, 3351),
-            new RSTile(3012, 3355),
-    };
-
     private static final int[] ROCK_ID = {9720, 9722};
     private static final int[] ORE_ID = {444};
     private volatile RSObject selectedObject = null;
@@ -67,7 +58,7 @@ public class RimmingtonGold extends AbstractMiningStrategy implements PaintListe
             sleepNoException(400, 500);
         } else if (distance(getLocal().getLocation(), MINING_SITE) > 14) {
             state = State.WALKING;
-            Walking.traverse(BANK_PATH, Walking.BACKWARDS);
+            Walking.walkTo(MINING_SITE);
         }
     }
 
@@ -77,21 +68,15 @@ public class RimmingtonGold extends AbstractMiningStrategy implements PaintListe
     private void doBanking() {
         if (distance(getLocal().getLocation(), BANK_LOCATION) > 4) {
             state = State.WALKING;
-            Walking.traverse(BANK_PATH, Walking.FORWARDS);
+            Walking.walkTo(BANK_LOCATION);
             System.out.println("Walking to bank...");
         } else if (!Bank.isOpen()) {
             state = State.BANKING;
             Bank.open();
         } else {
             state = State.BANKING;
-            Inventory.InventoryItem[] items = Inventory.getAll(ORE_ID);
-            for (Inventory.InventoryItem item : items) {
-                if (item.applyAction("Store All")) {
-                    sleepNoException(300, 400);
-                    break;
-                }
-            }
-            Walking.traverse(BANK_PATH, Walking.BACKWARDS);
+            Bank.depositAllExcept(PICKAXES);
+            Walking.walkTo(MINING_SITE);
         }
     }
 

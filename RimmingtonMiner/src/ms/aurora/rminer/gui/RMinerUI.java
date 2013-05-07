@@ -38,7 +38,7 @@ public class RMinerUI extends AnchorPane {
     @FXML
     public void onOK(ActionEvent evt) {
         RimmingtonMiner.strategy = cmbStrategies.getSelectionModel().getSelectedItem();
-        RimmingtonMiner.banking = true;
+        RimmingtonMiner.banking = false;
         RimmingtonMiner.state = IDLE;
         getScene().getWindow().hide();
     }
