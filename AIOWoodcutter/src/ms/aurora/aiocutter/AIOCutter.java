@@ -44,7 +44,7 @@ public class AIOCutter extends ActionScript implements PaintListener {
 
     @EventBus.EventHandler
     public void onMessageEvent(MessageEvent event) {
-        if(event.getMessage().matches("You get some (.*?) logs")) {
+        if(event.getMessage().startsWith("You get some") && event.getMessage().endsWith("logs.")) {
             logsCount++;
         } else if(event.getMessage().contains("advanced a Woodcutting level")) {
             levelsGained++;
