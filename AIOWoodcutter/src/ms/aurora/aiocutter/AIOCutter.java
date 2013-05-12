@@ -11,6 +11,7 @@ import ms.aurora.aiocutter.task.MessageListenerTask;
 import ms.aurora.api.script.ActionScript;
 import ms.aurora.api.script.ScriptManifest;
 import ms.aurora.api.script.task.EventBus;
+import ms.aurora.api.util.Timer;
 import ms.aurora.event.listeners.PaintListener;
 
 import java.awt.*;
@@ -28,8 +29,11 @@ public class AIOCutter extends ActionScript implements PaintListener {
     public static int logsCount = 0;
     public static int levelsGained = 0;
 
+    private Timer timer;
+
     @Override
     public void onStart() {
+        timer = new Timer();
         getQueue().add(new MessageListenerTask());
 
         submit(new PositioningAction());
@@ -60,5 +64,8 @@ public class AIOCutter extends ActionScript implements PaintListener {
         graphics.drawString("Configuration: " + configuration.getClass().getSimpleName(), 10, 30);
         graphics.drawString("Logs cut: " + logsCount, 10, 50);
         graphics.drawString("Levels gained: " + levelsGained, 10, 70);
+        graphics.drawString(Timer.formatTime(timer.elapsed()), 10, 100);
+        graphics.drawString("Logs per hour: " + timer.getHourlyRate(logsCount), 10, 130);
+        graphics.drawString("Levels per hour: " + timer.getHourlyRate(levelsGained), 10, 150);
     }
 }

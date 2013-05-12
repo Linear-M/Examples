@@ -1,5 +1,6 @@
 package ms.aurora.aiocutter.action;
 
+import ms.aurora.api.methods.Camera;
 import ms.aurora.api.methods.Objects;
 import ms.aurora.api.methods.Players;
 import ms.aurora.api.methods.Walking;
@@ -28,6 +29,11 @@ public class ChopAction extends Action {
         RSObject tree = Objects.get(ID(configuration.getSelectedTree().ids()));
         if (tree != null && configuration.getSkillArea().contains(tree.getLocation())) {
             if (!tree.applyAction("Chop down " + configuration.getSelectedTree().name())) {
+                if(!tree.isOnScreen()) {
+                    Walking.walkToLocal(tree.getLocation());
+                    Camera.turnTo(tree);
+                    return 200;
+                }
                 error("Failed to click tree");
             }
         } else {
