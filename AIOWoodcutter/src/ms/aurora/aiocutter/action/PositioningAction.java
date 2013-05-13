@@ -3,6 +3,7 @@ package ms.aurora.aiocutter.action;
 import ms.aurora.api.methods.Walking;
 import ms.aurora.api.methods.tabs.Inventory;
 import ms.aurora.api.script.Action;
+import ms.aurora.api.wrappers.RSTile;
 
 import static ms.aurora.aiocutter.AIOCutter.configuration;
 import static ms.aurora.api.methods.Players.getLocal;
@@ -18,7 +19,7 @@ public class PositioningAction extends Action {
 
     @Override
     public int execute() {
-        Walking.walkTo(configuration.getSkillArea().getRandomTile());
+        Walking.walkTo(new RSTile(3285, 3435));
         return 600;
     }
 }
