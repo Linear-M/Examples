@@ -1,6 +1,7 @@
 package ms.aurora.aiocutter.action;
 
 import ms.aurora.api.methods.Walking;
+import ms.aurora.api.methods.filters.WidgetItemFilters;
 import ms.aurora.api.methods.tabs.Bank;
 import ms.aurora.api.methods.tabs.Inventory;
 import ms.aurora.api.script.Action;
@@ -39,7 +40,7 @@ public class BankAction extends Action {
         } else if(!Bank.isOpen()) {
             Bank.open();
         } else {
-            Bank.depositAll(configuration.getSelectedTree().logs());
+            Bank.depositAll(WidgetItemFilters.ID(configuration.getSelectedTree().logs()));
             Bank.close();
         }
         return 1000;

@@ -14,12 +14,13 @@ import static ms.aurora.api.methods.Players.getLocal;
 public class PositioningAction extends Action {
     @Override
     public boolean activate() {
+        System.out.println("Activation condition: " + configuration.getSkillArea().contains(getLocal().getLocation()));
         return !configuration.getSkillArea().contains(getLocal().getLocation()) && !Inventory.isFull();
     }
 
     @Override
     public int execute() {
-        Walking.walkTo(new RSTile(3285, 3435));
+        Walking.walkTo(new RSTile(3285, 3445));
         return 600;
     }
 }

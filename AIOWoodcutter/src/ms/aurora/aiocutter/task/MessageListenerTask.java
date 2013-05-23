@@ -17,7 +17,7 @@ public class MessageListenerTask extends PassiveTask {
     private String lastMessage = "";
 
     private String getLatestMessage() {
-        RSWidgetGroup group = Widgets.getWidgets(CHATBOX_GROUP_ID);
+        RSWidgetGroup group = Widgets.getWidgetGroup(CHATBOX_GROUP_ID);
         String lastText = "";
         for(RSWidget widget : group.getWidgets()) {
             if(widget.getText() != null && widget.getText().length() > 0) {

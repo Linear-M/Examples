@@ -5,6 +5,8 @@ import ms.aurora.api.script.Action;
 
 import static ms.aurora.aiocutter.AIOCutter.banking;
 import static ms.aurora.aiocutter.AIOCutter.configuration;
+import static ms.aurora.api.methods.filters.WidgetItemFilters.ID;
+import static ms.aurora.api.methods.tabs.Inventory.dropAllByColumn;
 
 /**
  * @author _override
@@ -18,7 +20,7 @@ public class DropAction extends Action {
 
     @Override
     public int execute() {
-        Inventory.dropAllByColumn(configuration.getSelectedTree().logs());
+        dropAllByColumn(ID(configuration.getSelectedTree().logs()));
         return 200;
     }
 
